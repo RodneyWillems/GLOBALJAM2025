@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Bubble
+  - Bomb
   layers:
   - Default
   - TransparentFX
@@ -12,9 +13,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Piper
+  - Bubble
+  - Bomb
   - 
   - 
   - 

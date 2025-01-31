@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 8682238489395360138}
   - component: {fileID: 5683241603990562897}
   - component: {fileID: 2806575299231804968}
-  - component: {fileID: 5621583231019572247}
   - component: {fileID: -4083727536609234078}
+  - component: {fileID: 4046544825483802131}
   m_Layer: 7
-  m_Name: Bubble
-  m_TagString: Bubble
+  m_Name: BombBubble
+  m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,19 +110,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5621583231019572247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4075600580520441725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fe2d97fa922d1749887fab31b3e5824, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_scoreToAdd: 0
 --- !u!54 &-4083727536609234078
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -150,3 +137,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
+--- !u!114 &4046544825483802131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4075600580520441725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 296e9263871885f47b7a42f9faea059b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_scoreToAdd: 0
