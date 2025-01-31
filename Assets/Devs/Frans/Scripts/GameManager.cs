@@ -4,6 +4,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,7 +13,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject m_bubblePrefab, m_bossBubblePrefab, m_bombPrefab, m_pipePrefab;
 
+    [SerializeField]
+    private GameObject m_death;
     private List<GameObject> m_pipeSpawns;
+
     private GameObject m_spawnedPipes;
     private Coroutine m_bubbleSpawner;
 
@@ -29,6 +33,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        Time.timeScale = 1;
         m_wait = 0.5f;
         m_pipeSpawns = new();
     }
@@ -94,6 +99,17 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
         return m_isPaused;
+    }
+
+    public void PlayerDeath()
+    {
+        Time.timeScale = 0;
+        m_death.SetActive(true);
+    }
+
+    public void ResetScene()
+    {
+        SceneManager.LoadScene("Game");
     }
 
     public void AddScore(int scoreToAdd)
