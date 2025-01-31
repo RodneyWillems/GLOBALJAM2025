@@ -5,9 +5,12 @@ public class BubbleBase : MonoBehaviour
     [SerializeField]
     protected int m_scoreToAdd;
 
+    [SerializeField]
+    protected float m_lerpTime = 5;
+
     protected bool m_destroyedByPlayer;
 
-    protected float m_lerpTime = 5;
+
 
 
     private void OnCollisionEnter(Collision collision)

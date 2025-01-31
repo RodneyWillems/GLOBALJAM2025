@@ -11,7 +11,10 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     [SerializeField]
-    private GameObject m_bubblePrefab, m_bossBubblePrefab, m_bombPrefab, m_pipePrefab;
+    private GameObject m_bossBubblePrefab, m_bombPrefab, m_pipePrefab;
+
+    [SerializeField]
+    private GameObject[] m_bubblePrefab;
 
     [SerializeField]
     private GameObject m_death;
@@ -71,13 +74,14 @@ public class GameManager : MonoBehaviour
         {
             int randomPipe = Random.Range(0, m_pipeSpawns.Count);
             int randombomb = Random.Range(0, 20);
+            int randomBubble = Random.Range(0, m_bubblePrefab.Length);
             if(randombomb == 5)
             {
                 Instantiate(m_bombPrefab, m_pipeSpawns.ElementAt(randomPipe).transform.position, Quaternion.identity);
             }
             else
             {
-                Instantiate(m_bubblePrefab, m_pipeSpawns.ElementAt(randomPipe).transform.position, Quaternion.identity);
+                Instantiate(m_bubblePrefab[randomBubble], m_pipeSpawns.ElementAt(randomPipe).transform.position, Quaternion.identity);
             }
  
             yield return new WaitForSeconds(m_wait);
