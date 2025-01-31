@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Bubble
+  m_Name: M_Bubble 2
   m_Shader: {fileID: -6465566751694194690, guid: 6104f3466b0a5764ab96acdacc0e2328, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -52,7 +52,7 @@ Material:
     - _Smoothness: 0.983
     - _Tiling: 0.38
     m_Colors:
-    - _Color: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 0.61635214, g: 0.009691008, b: 0.12742941, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &5627796670953968093

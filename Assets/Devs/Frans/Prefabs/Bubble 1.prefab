@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5621583231019572247}
   - component: {fileID: -4083727536609234078}
   m_Layer: 7
-  m_Name: Bubble
+  m_Name: Bubble 1
   m_TagString: Bubble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c076f479758942745a193b83785318a3, type: 2}
+  - {fileID: 2100000, guid: 03a94ffef1489dc43bd296d9bc440bd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -122,8 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fe2d97fa922d1749887fab31b3e5824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_scoreToAdd: 10
-  m_lerpTime: 9
+  m_scoreToAdd: 25
+  m_lerpTime: 7
 --- !u!54 &-4083727536609234078
 Rigidbody:
   m_ObjectHideFlags: 0

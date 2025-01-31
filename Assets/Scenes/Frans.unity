@@ -326,10 +326,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 268c9fcae87015449b36501dbb020048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bubblePrefab: {fileID: 4075600580520441725, guid: ba58ad32d4b9b0a4ebab925548a5c2eb, type: 3}
   m_bossBubblePrefab: {fileID: 0}
   m_bombPrefab: {fileID: 4075600580520441725, guid: 93fa5dc914095a3438f2484c9525afd7, type: 3}
   m_pipePrefab: {fileID: 8764728818921261790, guid: d90eb6e42f415c045b1648844a19f877, type: 3}
+  m_bubblePrefab:
+  - {fileID: 4075600580520441725, guid: ba58ad32d4b9b0a4ebab925548a5c2eb, type: 3}
+  - {fileID: 4075600580520441725, guid: 946f772cec81d8a4da8834b60328e83f, type: 3}
+  - {fileID: 4075600580520441725, guid: e3671346d4a85224ea4b20b64bfd3b1d, type: 3}
+  - {fileID: 4075600580520441725, guid: bee20af724bc8a04492e96ad9f9cb2bb, type: 3}
+  m_death: {fileID: 0}
 --- !u!4 &1887231043
 Transform:
   m_ObjectHideFlags: 0
