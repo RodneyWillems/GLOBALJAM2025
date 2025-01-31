@@ -108,6 +108,7 @@ public class GameManager : MonoBehaviour
     public void PlayerDeath()
     {
         Time.timeScale = 0;
+        Cursor.lockState= CursorLockMode.None;
         m_death.SetActive(true);
     }
 
