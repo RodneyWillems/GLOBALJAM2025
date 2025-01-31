@@ -46,12 +46,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Metallic: 0.95
+    - _Metallic: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Smoothness: 0.9
     - _Tiling: 0.46
-    m_Colors: []
+    m_Colors:
+    - _Color: {r: 0.64920783, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &5627796670953968093
