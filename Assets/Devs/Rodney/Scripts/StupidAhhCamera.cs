@@ -20,8 +20,6 @@ public class StupidAhhCamera : MonoBehaviour
         float mouseX = m_playerControls.DefaultMovement.Look.ReadValue<Vector2>().x * m_mouseSense * Time.deltaTime;
         float mouseY = m_playerControls.DefaultMovement.Look.ReadValue<Vector2>().y * m_mouseSense * Time.deltaTime;
 
-        print("mouse X: " + mouseX + " mouse Y: " + mouseY);
-
         m_xRotation -= mouseY;
         m_xRotation = Mathf.Clamp(m_xRotation, -90f, 90f);
 
@@ -29,7 +27,6 @@ public class StupidAhhCamera : MonoBehaviour
         m_playerBody.Rotate(Vector3.up * mouseX);
     }
 
-    // Update is called once per frame
     void Update()
     {
         Look();   

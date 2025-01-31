@@ -1,3 +1,4 @@
+using System.Net.Http.Headers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,9 +6,16 @@ public class PlayerMovement : MonoBehaviour
 {
     #region Variables
 
+    [Header("Trident shit")]
     [SerializeField] private GameObject m_tridentPrefab;
+    [SerializeField] private Transform m_tridentSpawnPoint;
     [SerializeField] private int m_throwingSpeed;
 
+    [Header("Kanker camera")]
+    [SerializeField] private Transform m_cameraBS;
+
+    //Miscellaneous
+    private int m_health;
     private PlayerControls m_playerControls;
     private Trident m_thrownTrident;
 
@@ -30,13 +38,9 @@ public class PlayerMovement : MonoBehaviour
         m_playerControls.DefaultMovement.Disable();
     }
 
-    void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-
     private void SetupControls()
     {
+        //THIS IS JUST SETUP LOOK AWAY YOU FUCKING DUMBASS I HATE YOU
         m_playerControls = new();
         m_playerControls.DefaultMovement.Shoot.started += ThrowTrident;
         m_playerControls.DefaultMovement.Pause.started += Pause;
@@ -45,41 +49,62 @@ public class PlayerMovement : MonoBehaviour
 
     #endregion
 
+    #region Damage
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // When player gets hit by bomb he go DIE
+        if (collision.gameObject.CompareTag("Bomb"))
+        {
+            Destroy(collision.gameObject);
+            m_health--;
+            if (m_health == 0)
+            {
+                //GameManager.Instance.PlayerDeath();
+            }
+        }
+    }
+
+    #endregion
+
+    #region INPUTS
+
     private void ThrowTrident(InputAction.CallbackContext context)
     {
         // Throw the fucking Trident you moron READ THE NAME
         if (m_thrownTrident == null) 
         {
-            m_thrownTrident = Instantiate(m_tridentPrefab, transform.position + transform.forward, Quaternion.identity).GetComponent<Trident>();
+            m_thrownTrident = Instantiate(m_tridentPrefab, m_tridentSpawnPoint.position, Quaternion.identity).GetComponent<Trident>();
             m_thrownTrident.Player = this;
-            m_thrownTrident.gameObject.transform.forward = transform.forward;
-            m_thrownTrident.GetComponent<Rigidbody>().linearVelocity = transform.forward * m_throwingSpeed;
+            m_thrownTrident.gameObject.transform.forward = m_cameraBS.forward;
+            m_thrownTrident.GetComponent<Rigidbody>().linearVelocity = m_cameraBS.forward * m_throwingSpeed;
         }
     }
 
-    public void TridentHitSomething(Vector3 newPos)
+    public void TridentHitSomething(Vector3 newPos, bool teleport = false)
     {
-        transform.position = newPos;
+        // When the trident fucking hits a bubble you TELEPORT
+        if (teleport)
+        {
+            transform.position = newPos + transform.forward * 2;
+        }
         m_thrownTrident = null;
     }
 
     private void Pause(InputAction.CallbackContext context)
     {
         // PAUSE THE GODDAMN GAME
-        /*if (GameManager.Instance.Pause())
+        if (GameManager.Instance.Pause())
         {
             m_playerControls.DefaultMovement.Shoot.Disable();
+            m_playerControls.DefaultMovement.Look.Disable();
         }
         else 
         {
             m_playerControls.DefaultMovement.Shoot.Enable();
+            m_playerControls.DefaultMovement.Look.Enable();
         }
-        */
     }
 
-
-    void Update()
-    {
-
-    }
+    #endregion
 }
