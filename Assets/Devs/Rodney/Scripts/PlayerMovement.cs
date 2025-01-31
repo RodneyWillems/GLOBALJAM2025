@@ -14,8 +14,13 @@ public class PlayerMovement : MonoBehaviour
     [Header("Kanker camera")]
     [SerializeField] private Transform m_cameraBS;
 
-    //Miscellaneous
+    [Header("Je kanker health")]
+    [SerializeField] private GameObject[] m_activeLives;
+    [SerializeField] private GameObject[] m_unactiveLives;
+
     private int m_health;
+
+    //Miscellaneous
     private PlayerControls m_playerControls;
     private Trident m_thrownTrident;
 
@@ -26,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         SetupControls();
+        m_health = 3;
     }
 
     private void OnEnable()
@@ -58,9 +64,10 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(collision.gameObject);
             m_health--;
-            if (m_health == 0)
+            if (m_health <= 0)
             {
-                //GameManager.Instance.PlayerDeath();
+                m_playerControls.DefaultMovement.Disable();
+                GameManager.Instance.PlayerDeath();
             }
         }
     }

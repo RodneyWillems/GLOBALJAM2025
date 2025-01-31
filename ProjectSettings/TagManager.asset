@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bubble
   - Bomb
+  - Boss
   layers:
   - Default
   - TransparentFX

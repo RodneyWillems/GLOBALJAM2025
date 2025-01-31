@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Artists/Riley/Textures/bom_DefaultMaterial_AlbedoTransparency.png.meta
-guid: e6bebaf99173a01439979e96b8a4a3d8
-========
-guid: c4e4e17cabb2c914fa1ff9de68de9c30
->>>>>>>> origin/Dean:Assets/Artists/Dean/Textures/T_Shell.png.meta
+guid: edbb0569396ba3f4b8a09c6eb15294da
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

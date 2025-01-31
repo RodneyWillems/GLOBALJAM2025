@@ -15,6 +15,11 @@ public class StupidAhhCamera : MonoBehaviour
         m_playerControls.DefaultMovement.Look.Enable();
     }
 
+    private void OnDisable()
+    {
+        m_playerControls.DefaultMovement.Look.Disable();
+    }
+
     private void Look()
     {
         float mouseX = m_playerControls.DefaultMovement.Look.ReadValue<Vector2>().x * m_mouseSense * Time.deltaTime;

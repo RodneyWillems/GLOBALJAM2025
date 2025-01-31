@@ -54,6 +54,9 @@ public class GameManager : MonoBehaviour
             if(colliderOverlap.Length == 0)
             {
                 m_spawnedPipes = Instantiate(m_pipePrefab, new Vector3(randomPos.x, 0, randomPos.z), Quaternion.identity);
+                Vector3 randomLook = Random.insideUnitSphere + m_spawnedPipes.transform.position;
+                randomLook.y = 0;
+                m_spawnedPipes.transform.LookAt(randomLook);
                 m_pipeSpawns.Add(m_spawnedPipes);
             }
         }
