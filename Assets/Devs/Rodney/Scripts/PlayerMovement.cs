@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Net.Http.Headers;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -90,12 +91,19 @@ public class PlayerMovement : MonoBehaviour
 
     public void TridentHitSomething(Vector3 newPos, bool teleport = false)
     {
+        StartCoroutine(WaitTeleport(newPos, teleport));
+    }
+
+    private IEnumerator WaitTeleport(Vector3 newPos, bool teleport = false)
+    {
+        yield return new WaitForSeconds(0.4f);
         // When the trident fucking hits a bubble you TELEPORT
         if (teleport)
         {
             transform.position = newPos + transform.forward * 2;
         }
         m_thrownTrident = null;
+        yield return null;
     }
 
     private void Pause(InputAction.CallbackContext context)
