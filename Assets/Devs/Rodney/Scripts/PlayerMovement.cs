@@ -99,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator WaitTeleport(Vector3 newPos, bool teleport = false)
     {
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.3f);
         // When the trident fucking hits a bubble you TELEPORT
         if (teleport)
         {
