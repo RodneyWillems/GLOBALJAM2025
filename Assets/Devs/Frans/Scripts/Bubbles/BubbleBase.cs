@@ -3,6 +3,9 @@ using UnityEngine;
 public class BubbleBase : MonoBehaviour
 {
     [SerializeField]
+    protected GameObject m_VFX;
+
+    [SerializeField]
     protected int m_scoreToAdd;
 
     [SerializeField]
@@ -26,6 +29,7 @@ public class BubbleBase : MonoBehaviour
     {
         if (m_destroyedByPlayer)
         {
+            Instantiate(m_VFX, transform.position, Quaternion.identity);
             GameManager.Instance.AddScore(m_scoreToAdd);
         }
     }

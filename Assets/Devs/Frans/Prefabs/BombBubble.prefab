@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 296e9263871885f47b7a42f9faea059b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_VFX: {fileID: 2735505946110491189, guid: 020b920b62135924f9588ada2ed4d725, type: 3}
   m_scoreToAdd: 0
   m_lerpTime: 5
 --- !u!54 &1811479646393351962
