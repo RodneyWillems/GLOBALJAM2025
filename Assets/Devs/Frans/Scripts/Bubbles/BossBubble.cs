@@ -83,6 +83,11 @@ public class BossBubble : MonoBehaviour
                     Time.timeScale = 0;
                     Cursor.lockState = CursorLockMode.None;
                 }
+                else
+                {
+                    GameManager.Instance.BossDeath();
+                }
+
                 Destroy(gameObject);
 
             }
@@ -93,10 +98,16 @@ public class BossBubble : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.gameObject.CompareTag("Player"))
+        if (!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Bomb") && !other.gameObject.CompareTag("Bubble"))
+        {
             Destroy(other.gameObject);
+        }
+
         else
+        {
             other.transform.position += transform.forward * 5;
+        }
+
     }
     
 

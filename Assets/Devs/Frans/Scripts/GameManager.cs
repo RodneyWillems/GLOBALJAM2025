@@ -132,6 +132,13 @@ public class GameManager : MonoBehaviour
         m_winScreen.SetActive(false);
         m_crosshair.SetActive(true);
         Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+        BossDeath();
+    }
+
+    public void BossDeath()
+    {
+        m_bossSpawned = false;
         StartCoroutine(BubblesSpawner());
     }
 
@@ -147,6 +154,8 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Game");
     }
+
+    
 
     public void AddScore(int scoreToAdd)
     {
