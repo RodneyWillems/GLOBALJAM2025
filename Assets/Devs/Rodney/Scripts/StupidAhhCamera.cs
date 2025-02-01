@@ -22,6 +22,7 @@ public class StupidAhhCamera : MonoBehaviour
 
     private void Look()
     {
+        // Don't fucking ask me go to Brackey's and watch
         float mouseX = m_playerControls.DefaultMovement.Look.ReadValue<Vector2>().x * m_mouseSense * Time.deltaTime;
         float mouseY = m_playerControls.DefaultMovement.Look.ReadValue<Vector2>().y * m_mouseSense * Time.deltaTime;
 

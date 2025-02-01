@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform m_cameraBS;
 
     [Header("Je kanker health")]
-    [SerializeField] private GameObject[] m_activeLives;
     [SerializeField] private GameObject[] m_unactiveLives;
 
     private int m_health;
@@ -64,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(collision.gameObject);
             m_health--;
+            m_unactiveLives[m_health].SetActive(true);
             if (m_health <= 0)
             {
                 m_playerControls.DefaultMovement.Disable();

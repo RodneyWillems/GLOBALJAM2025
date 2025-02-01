@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -18,6 +19,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private GameObject m_death;
+
+    [SerializeField]
+    private TextMeshProUGUI m_scoreText;
+
     private List<GameObject> m_pipeSpawns;
 
     private GameObject m_spawnedPipes;
@@ -123,5 +128,6 @@ public class GameManager : MonoBehaviour
     public void AddScore(int scoreToAdd)
     {
         m_score += scoreToAdd;
+        m_scoreText.text = m_score.ToString();
     }
 }
