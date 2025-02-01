@@ -5,7 +5,7 @@ public class UIManager : MonoBehaviour
 {
     public void GoToGame()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("environment");
     }
 
     public void MainMenu()
