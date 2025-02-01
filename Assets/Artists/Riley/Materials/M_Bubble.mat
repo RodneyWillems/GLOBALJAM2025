@@ -53,10 +53,10 @@ Material:
     - _Metallic: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Smoothness: 0.773
+    - _Smoothness: 0.468
     - _Tiling: 0.37
     m_Colors:
-    - _Color: {r: 4, g: 0.22311905, b: 0, a: 1}
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &5627796670953968093
