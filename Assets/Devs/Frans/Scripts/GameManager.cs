@@ -32,6 +32,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject m_crosshair;
 
+    [Header ("Audio")]
+    [SerializeField]
+    private AudioClip m_ambient;
+    [SerializeField]
+    private AudioClip m_bossMusic;
+
     private List<GameObject> m_pipeSpawns;
 
     private GameObject m_spawnedPipes;
@@ -47,6 +53,8 @@ public class GameManager : MonoBehaviour
     private int m_score;
     private int m_bossScore;
 
+    private AudioSource m_audioSource;
+
     #region Launch Game
     private void Awake()
     {
@@ -54,6 +62,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         m_wait = 0.9f;
         m_pipeSpawns = new();
+        m_audioSource = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -85,6 +94,10 @@ public class GameManager : MonoBehaviour
     private void BossSpawner()
     {
         m_bossSpawned = true;
+        m_audioSource.Stop();
+        m_audioSource.resource = m_bossMusic;
+        m_audioSource.volume = 0.7f;
+        m_audioSource.Play();
         Instantiate(m_bossBubblePrefab, new Vector3(0, 10, 0), Quaternion.identity);
     }
 
@@ -139,6 +152,11 @@ public class GameManager : MonoBehaviour
     public void BossDeath()
     {
         m_bossSpawned = false;
+        m_audioSource.Stop();
+        m_audioSource.resource = m_ambient;
+        m_audioSource.volume = 1f;
+        m_audioSource.Play();
+
         StartCoroutine(BubblesSpawner());
     }
 
@@ -154,8 +172,6 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Game");
     }
-
-    
 
     public void AddScore(int scoreToAdd)
     {

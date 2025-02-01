@@ -34,7 +34,7 @@ public class BossBubble : MonoBehaviour
         int spawnBombs = Random.Range(5, 10);
         for (int i = 0; i < spawnBombs; i++)
         {
-            Vector3 randomPos = Random.insideUnitSphere * 5 + transform.position;
+            Vector3 randomPos = Random.insideUnitSphere * 3.5f + transform.position;
             Instantiate(GameManager.Instance.m_bombPrefab, randomPos, Quaternion.identity);
         }
         StartCoroutine(Timer());

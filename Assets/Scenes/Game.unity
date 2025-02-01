@@ -1109,8 +1109,8 @@ RectTransform:
   m_GameObject: {fileID: 118407077}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 670718207}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5423,7 +5423,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -33.106644, y: 97.13881}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &584699106 stripped
@@ -6060,7 +6060,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 317.15833, y: 317.15833}
+  m_SizeDelta: {x: 236.092, y: 240.358}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &676553631 stripped
 Transform:
@@ -8731,7 +8731,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -827, y: 365}
+  m_AnchoredPosition: {x: -860.1066, y: 462.1388}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &967137995 stripped
@@ -8781,6 +8781,8 @@ MonoBehaviour:
   m_winScreen: {fileID: 1502337861}
   m_scoreText: {fileID: 1600851494}
   m_crosshair: {fileID: 670718206}
+  m_ambient: {fileID: 8300000, guid: 26fbed462d983464cad502f5bbb9ca5d, type: 3}
+  m_bossMusic: {fileID: 8300000, guid: 940396ea5a883e8409b7d5ecd270a77c, type: 3}
   m_endless: 0
 --- !u!4 &968257025
 Transform:
@@ -8812,7 +8814,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -11030,7 +11032,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 458333703036897103, guid: 3a6feee1bdea9ac4392f82c74610206c, type: 3}
       propertyPath: m_mouseSense
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 842156543226042905, guid: 3a6feee1bdea9ac4392f82c74610206c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17230,7 +17232,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -22, y: -81}
+  m_AnchoredPosition: {x: 0.0000019073486, y: -2.8611908}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1935707385
