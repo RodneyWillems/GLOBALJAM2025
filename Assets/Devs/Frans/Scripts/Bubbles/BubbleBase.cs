@@ -16,7 +16,7 @@ public class BubbleBase : MonoBehaviour
 
 
 
-    private void OnCollisionEnter(Collision collision)
+    protected virtual void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -25,7 +25,7 @@ public class BubbleBase : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     {
         if (m_destroyedByPlayer)
         {

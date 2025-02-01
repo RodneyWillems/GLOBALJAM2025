@@ -6,22 +6,23 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
     [SerializeField]
-    private GameObject m_bossBubblePrefab, m_bombPrefab, m_pipePrefab;
-
-    [SerializeField]
-    private GameObject[] m_bubblePrefab;
+    private GameObject m_bossBubblePrefab, m_pipePrefab;
 
     [SerializeField]
     private GameObject m_death;
 
     [SerializeField]
     private TextMeshProUGUI m_scoreText;
+
+    public GameObject m_bombPrefab;
+    public GameObject[] m_bubblePrefab;
 
     private List<GameObject> m_pipeSpawns;
 
@@ -30,12 +31,13 @@ public class GameManager : MonoBehaviour
 
     private bool m_isPaused;
     private bool m_bossSpawned;
+    private bool m_endless;
 
     private float m_wait;
 
     private int m_amountOfPipes = 10;
     private int m_score;
-
+    private int m_bossScore;
 
 
     private void Awake()
@@ -72,8 +74,7 @@ public class GameManager : MonoBehaviour
     private void BossSpawner()
     {
         m_bossSpawned = true;
-        Instantiate(m_bossBubblePrefab);
-
+        Instantiate(m_bossBubblePrefab, new Vector3(0, 10, 0), Quaternion.identity);
     }
 
     private IEnumerator BubblesSpawner()
@@ -128,6 +129,13 @@ public class GameManager : MonoBehaviour
     public void AddScore(int scoreToAdd)
     {
         m_score += scoreToAdd;
-        m_scoreText.text = m_score.ToString();
+        m_bossScore += scoreToAdd;
+        m_scoreText.text = "Score: " + m_score.ToString(); 
+
+        if(m_bossScore >= 1000)
+        {
+            BossSpawner();
+            m_bossScore = 0;
+        }
     }
 }
