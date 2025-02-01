@@ -12,4 +12,9 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene("Main Menu");
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

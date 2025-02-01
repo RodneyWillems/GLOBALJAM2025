@@ -1,18 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
     [SerializeField]
-    private GameObject m_bubblePrefab, m_bossBubblePrefab, m_pipePrefab;
+    private GameObject m_bossBubblePrefab, m_bombPrefab, m_pipePrefab;
+
+    [SerializeField]
+    private GameObject[] m_bubblePrefab;
+
+    [SerializeField]
+    private GameObject m_death;
+
+    [SerializeField]
+    private TextMeshProUGUI m_scoreText;
 
     private List<GameObject> m_pipeSpawns;
+
     private GameObject m_spawnedPipes;
     private Coroutine m_bubbleSpawner;
 
@@ -29,6 +41,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        Time.timeScale = 1;
         m_wait = 0.5f;
         m_pipeSpawns = new();
     }
@@ -46,6 +59,9 @@ public class GameManager : MonoBehaviour
             if(colliderOverlap.Length == 0)
             {
                 m_spawnedPipes = Instantiate(m_pipePrefab, new Vector3(randomPos.x, 0, randomPos.z), Quaternion.identity);
+                Vector3 randomLook = Random.insideUnitSphere + m_spawnedPipes.transform.position;
+                randomLook.y = 0;
+                m_spawnedPipes.transform.LookAt(randomLook);
                 m_pipeSpawns.Add(m_spawnedPipes);
             }
         }
@@ -65,8 +81,17 @@ public class GameManager : MonoBehaviour
         while (!m_bossSpawned)
         {
             int randomPipe = Random.Range(0, m_pipeSpawns.Count);
-            Instantiate(m_bubblePrefab, m_pipeSpawns.ElementAt(randomPipe).transform.position, Quaternion.identity);
-
+            int randombomb = Random.Range(0, 20);
+            int randomBubble = Random.Range(0, m_bubblePrefab.Length);
+            if(randombomb == 5)
+            {
+                Instantiate(m_bombPrefab, m_pipeSpawns.ElementAt(randomPipe).transform.position, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(m_bubblePrefab[randomBubble], m_pipeSpawns.ElementAt(randomPipe).transform.position, Quaternion.identity);
+            }
+ 
             yield return new WaitForSeconds(m_wait);
         }
     }
@@ -77,17 +102,32 @@ public class GameManager : MonoBehaviour
 
         if (m_isPaused)
         {
+            Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None;
         }
         else
         {
+            Time.timeScale = 1;
             Cursor.lockState = CursorLockMode.Locked;
         }
         return m_isPaused;
     }
 
+    public void PlayerDeath()
+    {
+        Time.timeScale = 0;
+        Cursor.lockState= CursorLockMode.None;
+        m_death.SetActive(true);
+    }
+
+    public void ResetScene()
+    {
+        SceneManager.LoadScene("Game");
+    }
+
     public void AddScore(int scoreToAdd)
     {
         m_score += scoreToAdd;
+        m_scoreText.text = m_score.ToString();
     }
 }
