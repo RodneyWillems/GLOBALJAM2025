@@ -10,8 +10,10 @@ public class BossBubble : MonoBehaviour
     [SerializeField]
     private int m_bossHealth = 10;
 
+    [SerializeField]
+    private GameObject m_bossBubblePrefab;
+
     private bool m_destroyedByPlayer;
-    private GameObject[] m_spawnPoints;
     private List<GameObject> m_spawnedBubbleList;
     private float m_spawnTime = 5;
 
@@ -21,15 +23,18 @@ public class BossBubble : MonoBehaviour
     private void Awake()
     {
         m_playerControls = FindFirstObjectByType<PlayerMovement>();
+        m_spawnedBubbleList = new();
         SpawnBombs();
+        transform.LookAt(m_playerControls.transform.position);
     }
 
+    #region Spawner
     private void SpawnBombs()
     {
-
-        for (int i = 0; i < m_spawnPoints.Length; i++)
+        int spawnBombs = Random.Range(5, 10);
+        for (int i = 0; i < spawnBombs; i++)
         {
-            Vector3 randomPos = Random.insideUnitSphere * 5;
+            Vector3 randomPos = Random.insideUnitSphere * 5 + transform.position;
             Instantiate(GameManager.Instance.m_bombPrefab, randomPos, Quaternion.identity);
         }
         StartCoroutine(Timer());
@@ -44,35 +49,56 @@ public class BossBubble : MonoBehaviour
     private void SpawnBubbles()
     {
         StopCoroutine(Timer());
-        int randomBubble = Random.Range(0, GameManager.Instance.m_bubblePrefab.Length);
-        for (int i = 0; i < m_spawnPoints.Length; i++)
+        for (int i = 0; i < 20; i++)
         {
-            Vector3 randomPos = Random.insideUnitSphere * 5;
-            GameObject SpawnedBubble = Instantiate(GameManager.Instance.m_bubblePrefab[randomBubble], randomPos, Quaternion.identity);
+            Vector3 randomPos = Random.insideUnitSphere * 5 + transform.position;
+            GameObject SpawnedBubble = Instantiate(m_bossBubblePrefab, randomPos, Quaternion.identity);
             m_spawnedBubbleList.Add(SpawnedBubble);
         }
     }
+    #endregion
 
+    #region OnHit
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            foreach(GameObject bubble in m_spawnedBubbleList)
+            if(m_spawnedBubbleList.Count > 0)
             {
-                Destroy(bubble);
+                foreach (GameObject bubble in m_spawnedBubbleList)
+                {
+                    Destroy(bubble);
+                }
             }
+
 
             m_bossHealth--;
             
             if (m_bossHealth <= 0)
             {
                 m_destroyedByPlayer = true;
+                if (!GameManager.Instance.m_endless)
+                {
+                    GameManager.Instance.m_winScreen.SetActive(true);
+                    Time.timeScale = 0;
+                    Cursor.lockState = CursorLockMode.None;
+                }
                 Destroy(gameObject);
+
             }
             transform.LookAt(m_playerControls.transform.position);
             SpawnBombs();
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.gameObject.CompareTag("Player"))
+            Destroy(other.gameObject);
+        else
+            other.transform.position += transform.forward * 5;
+    }
+    
 
     private void OnDestroy()
     {
@@ -81,4 +107,5 @@ public class BossBubble : MonoBehaviour
             GameManager.Instance.AddScore(m_scoreToAdd);
         }
     }
+    #endregion
 }

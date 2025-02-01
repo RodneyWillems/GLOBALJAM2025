@@ -6,23 +6,31 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
-using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [Header("Prefabs")]
+    public GameObject m_bombPrefab;
+    public GameObject[] m_bubblePrefab;
+
     [SerializeField]
     private GameObject m_bossBubblePrefab, m_pipePrefab;
 
+    [Header ("Screens")]
     [SerializeField]
-    private GameObject m_death;
+    private GameObject m_loseScreen;
 
+    public GameObject m_winScreen;
+
+    [Header ("Score")]
     [SerializeField]
     private TextMeshProUGUI m_scoreText;
 
-    public GameObject m_bombPrefab;
-    public GameObject[] m_bubblePrefab;
+    [Header ("Crosshair")]
+    [SerializeField]
+    private GameObject m_crosshair;
 
     private List<GameObject> m_pipeSpawns;
 
@@ -31,7 +39,7 @@ public class GameManager : MonoBehaviour
 
     private bool m_isPaused;
     private bool m_bossSpawned;
-    private bool m_endless;
+    public bool m_endless;
 
     private float m_wait;
 
@@ -39,7 +47,7 @@ public class GameManager : MonoBehaviour
     private int m_score;
     private int m_bossScore;
 
-
+    #region Launch Game
     private void Awake()
     {
         Instance = this;
@@ -70,7 +78,10 @@ public class GameManager : MonoBehaviour
 
         m_bubbleSpawner = StartCoroutine(BubblesSpawner());
     }
+    #endregion
 
+    #region Spawns
+    //This spawns the boss
     private void BossSpawner()
     {
         m_bossSpawned = true;
@@ -96,6 +107,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(m_wait);
         }
     }
+    #endregion
 
     public bool Pause()
     {
@@ -114,11 +126,21 @@ public class GameManager : MonoBehaviour
         return m_isPaused;
     }
 
+    public void StartEndless()
+    {
+        m_endless = true;
+        m_winScreen.SetActive(false);
+        m_crosshair.SetActive(true);
+        Time.timeScale = 1f;
+        StartCoroutine(BubblesSpawner());
+    }
+
     public void PlayerDeath()
     {
         Time.timeScale = 0;
+        m_crosshair.SetActive(false);
         Cursor.lockState= CursorLockMode.None;
-        m_death.SetActive(true);
+        m_loseScreen.SetActive(true);
     }
 
     public void ResetScene()

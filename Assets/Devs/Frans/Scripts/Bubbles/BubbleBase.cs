@@ -13,9 +13,6 @@ public class BubbleBase : MonoBehaviour
 
     protected bool m_destroyedByPlayer;
 
-
-
-
     protected virtual void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
