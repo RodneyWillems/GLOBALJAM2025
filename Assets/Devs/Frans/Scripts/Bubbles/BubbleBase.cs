@@ -22,6 +22,7 @@ public class BubbleBase : MonoBehaviour
         {
             m_destroyedByPlayer = true;
         }
+        Instantiate(m_VFX, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
@@ -29,7 +30,6 @@ public class BubbleBase : MonoBehaviour
     {
         if (m_destroyedByPlayer)
         {
-            Instantiate(m_VFX, transform.position, Quaternion.identity);
             GameManager.Instance.AddScore(m_scoreToAdd);
         }
     }

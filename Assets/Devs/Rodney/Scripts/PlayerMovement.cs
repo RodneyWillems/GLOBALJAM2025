@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private int m_health;
 
     //Miscellaneous
+    private AudioSource m_audioSource;
     private PlayerControls m_playerControls;
     private Trident m_thrownTrident;
 
@@ -32,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     {
         SetupControls();
         m_health = 3;
+        m_audioSource = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
@@ -64,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(collision.gameObject);
             m_health--;
+            m_audioSource.Play();
             m_unactiveLives[m_health].SetActive(true);
             if (m_health <= 0)
             {

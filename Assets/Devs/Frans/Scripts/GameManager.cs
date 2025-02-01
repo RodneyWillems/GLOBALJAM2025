@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         Time.timeScale = 1;
-        m_wait = 0.5f;
+        m_wait = 0.9f;
         m_pipeSpawns = new();
     }
 

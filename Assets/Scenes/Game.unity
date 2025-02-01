@@ -9040,15 +9040,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_bossBubblePrefab: {fileID: 4075600580520441725, guid: ba58ad32d4b9b0a4ebab925548a5c2eb, type: 3}
-  m_bombPrefab: {fileID: 1017707229456457597, guid: e8236fb368537a247b32c2ebf08e0693, type: 3}
   m_pipePrefab: {fileID: 8757549559646057738, guid: f40e6ecde70453045a54eff8db9b9ff8, type: 3}
+  m_death: {fileID: 496384053}
+  m_scoreText: {fileID: 1600851494}
+  m_bombPrefab: {fileID: 1017707229456457597, guid: e8236fb368537a247b32c2ebf08e0693, type: 3}
   m_bubblePrefab:
   - {fileID: 4075600580520441725, guid: ba58ad32d4b9b0a4ebab925548a5c2eb, type: 3}
   - {fileID: 4075600580520441725, guid: 946f772cec81d8a4da8834b60328e83f, type: 3}
   - {fileID: 4075600580520441725, guid: e3671346d4a85224ea4b20b64bfd3b1d, type: 3}
   - {fileID: 4075600580520441725, guid: bee20af724bc8a04492e96ad9f9cb2bb, type: 3}
-  m_death: {fileID: 496384053}
-  m_scoreText: {fileID: 1600851494}
 --- !u!4 &968257025
 Transform:
   m_ObjectHideFlags: 0
@@ -10806,6 +10806,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1016696454287650164, guid: 3a6feee1bdea9ac4392f82c74610206c, type: 3}
+      propertyPath: m_unactiveLives.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1016696454287650164, guid: 3a6feee1bdea9ac4392f82c74610206c, type: 3}
+      propertyPath: 'm_unactiveLives.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1935707385}
+    - target: {fileID: 1016696454287650164, guid: 3a6feee1bdea9ac4392f82c74610206c, type: 3}
+      propertyPath: 'm_unactiveLives.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1962780268}
+    - target: {fileID: 1016696454287650164, guid: 3a6feee1bdea9ac4392f82c74610206c, type: 3}
+      propertyPath: 'm_unactiveLives.Array.data[2]'
+      value: 
+      objectReference: {fileID: 28648204}
     - target: {fileID: 2982638725205273140, guid: 3a6feee1bdea9ac4392f82c74610206c, type: 3}
       propertyPath: m_Name
       value: Player
