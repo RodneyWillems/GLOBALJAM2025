@@ -177,12 +177,12 @@ public class GameManager : MonoBehaviour
     {
         m_score += scoreToAdd;
         m_bossScore += scoreToAdd;
-        m_scoreText.text = "Score: " + m_score.ToString(); 
+        m_scoreText.text = "Score: " + m_score.ToString();
 
-        if(m_bossScore >= 1000)
+        if (m_bossScore >= 500)
         {
-            BossSpawner();
             m_bossScore = 0;
+            BossSpawner();
         }
     }
 }

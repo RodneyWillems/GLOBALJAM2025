@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour
 #elif (UNITY_STANDALONE)
               Application.Quit();
 #elif (UNITY_WEBGL)
-              Application.OpenURL("itch url https://gohanblade.itch.io/trident-pop");
+              Application.OpenURL("https://gohanblade.itch.io/trident-pop");
 #endif
     }
 }
